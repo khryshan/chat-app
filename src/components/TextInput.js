@@ -7,14 +7,15 @@ import {
 } from 'react-native';
 import {colors} from '../styles/colors';
 
-const TextInput = (props) => {
-  const {label} = props;
-  console.log('label: ', label);
-
+const TextInput = ({inputStyles, label, onChangeText, ...props}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, inputStyles]}>
       {label && <Text style={styles.labelStyle}>{label}</Text>}
-      <DefaultTextInput {...props} style={styles.inputStyle} />
+      <DefaultTextInput
+        style={styles.inputStyle}
+        onChangeText={onChangeText}
+        {...props}
+      />
     </View>
   );
 };
